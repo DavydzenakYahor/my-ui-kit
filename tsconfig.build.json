@@ -11,6 +11,7 @@
     "skipLibCheck": true,
     "verbatimModuleSyntax": true,
     "allowArbitraryExtensions": true,
+    "types": ["vite/client"]
   },
   "include": ["src/index.ts", "src/components", "src/vite-env.d.ts"],
   "exclude": ["**/*.stories.tsx", "**/*.mdx"]
