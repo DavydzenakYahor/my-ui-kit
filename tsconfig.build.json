@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2023",
+    "lib": ["ES2023", "DOM"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
+    "allowArbitraryExtensions": true,
+  },
+  "include": ["src/index.ts", "src/components", "src/vite-env.d.ts"],
+  "exclude": ["**/*.stories.tsx", "**/*.mdx"]
+}

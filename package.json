@@ -1,14 +1,16 @@
 {
   "name": "@davydzenak_yahor/my-ui-kit",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.8",
   "type": "module",
   "main": "./dist/my-ui-kit.cjs.js",
   "module": "./dist/my-ui-kit.es.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/my-ui-kit.es.js",
-      "require": "./dist/my-ui-kit.cjs.js"
+      "require": "./dist/my-ui-kit.cjs.js",
+      "types": "./dist/index.d.ts"
     },
     "./styles": "./dist/my-ui-kit.css"
   },
@@ -17,12 +19,11 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_f8fe261aaa080dd"
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -53,6 +54,7 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.62.0",
     "vite": "^8.1.1",
+    "vite-plugin-dts": "^5.0.3",
     "vitest": "^4.1.10"
   }
 }
