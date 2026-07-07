@@ -15,7 +15,7 @@ export const Default: Story = {
 }
 
 export const WithValue: Story = {
-  args: { label: 'Email', value: 'yahor@example.com' },
+  args: { label: 'Email', value: 'email@example.com' },
 }
 
 export const WithError: Story = {
