@@ -1,0 +1,34 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+A reusable button component that supports multiple variants, sizes, and states.
+Use it for primary actions, destructive operations, or neutral interactions.
+
+## Variants
+
+Use `variant` prop to change the visual style of the button.
+
+<Canvas of={ButtonStories.Primary} />
+<Canvas of={ButtonStories.Danger} />
+<Canvas of={ButtonStories.Neutral} />
+
+## Sizes
+
+Use `size` prop to control the button size.
+
+<Canvas of={ButtonStories.Small} />
+
+## Disabled state
+
+When `disabled` is true, the button is non-interactive.
+The `aria-disabled` attribute is set automatically for accessibility.
+
+<Canvas of={ButtonStories.Disabled} />
+
+## Props
+
+<Controls />
