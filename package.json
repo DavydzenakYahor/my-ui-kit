@@ -1,7 +1,7 @@
 {
   "name": "@davydzenak_yahor/my-ui-kit",
   "private": false,
-  "version": "0.1.8",
+  "version": "0.1.9",
   "type": "module",
   "main": "./dist/my-ui-kit.cjs.js",
   "module": "./dist/my-ui-kit.es.js",
