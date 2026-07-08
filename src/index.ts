@@ -5,3 +5,4 @@ export { Badge } from './components/Badge/Badge';
 export { PaymentCard } from './components/PaymentCard/PaymentCard';
 export { BeforeAfterSlider } from './components/BeforeAfterSlider/BeforeAfterSlider';
 export { UploadDropzone } from './components/UploadDropzone/UploadDropzone';
+export { AIChatStream } from './components/AIChatStream/AIChatStream';

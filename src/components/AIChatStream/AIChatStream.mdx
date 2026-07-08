@@ -1,0 +1,36 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as AIChatStreamStories from './AIChatStream.stories';
+
+<Meta of={AIChatStreamStories} />
+
+# AIChatStream
+
+Streaming AI chat UI with phase-based lifecycle. Renders a user question bubble and an AI response that progresses through thinking → tool call → streaming text → complete.
+
+## Thinking
+
+Three bouncing dots while the model processes the request.
+
+<Canvas of={AIChatStreamStories.Thinking} />
+
+## ToolCall
+
+Spinner with a tool name while an external tool is running.
+
+<Canvas of={AIChatStreamStories.ToolCall} />
+
+## Streaming
+
+Answer appears character by character with a blinking cursor. Automatically transitions to Complete when all text is revealed. Control speed with `streamSpeed`.
+
+<Canvas of={AIChatStreamStories.Streaming} />
+
+## Complete
+
+Full answer rendered in dark theme. Cursor is gone.
+
+<Canvas of={AIChatStreamStories.Complete} />
+
+## Props
+
+<Controls />

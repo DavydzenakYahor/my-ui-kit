@@ -1,0 +1,191 @@
+.acs-root {
+  width: 520px;
+  font-family: var(--font-display);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.acs-root--light {
+  background: var(--color-surface-light);
+  color: var(--color-text-dark);
+  box-shadow: 0 1px 4px rgba(28, 26, 23, 0.08), 0 0 0 1px rgba(28, 26, 23, 0.07);
+}
+
+.acs-root--dark {
+  background: var(--color-surface-dark);
+  color: var(--color-text-light);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Question */
+
+.acs-question {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.acs-question-bubble {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 16px 16px 4px 16px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.acs-root--light .acs-question-bubble {
+  background: var(--color-surface-light-row);
+  color: var(--color-text-dark);
+}
+
+.acs-root--dark .acs-question-bubble {
+  background: var(--color-surface-dark-row);
+  color: var(--color-text-light);
+}
+
+/* Response row */
+
+.acs-response {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.acs-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--color-indigo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+.acs-body {
+  flex: 1;
+  min-width: 0;
+  padding-top: 5px;
+}
+
+/* Thinking dots */
+
+.acs-thinking {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.acs-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  animation: acs-bounce 1.2s ease-in-out infinite;
+}
+
+.acs-root--light .acs-dot {
+  background: var(--color-text-muted);
+}
+
+.acs-root--dark .acs-dot {
+  background: var(--color-text-dark-muted);
+}
+
+.acs-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.acs-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes acs-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Tool call */
+
+.acs-tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.acs-root--light .acs-tool {
+  background: var(--color-surface-light-row);
+  color: var(--color-text-muted);
+}
+
+.acs-root--dark .acs-tool {
+  background: var(--color-surface-dark-row);
+  color: var(--color-text-dark-muted);
+}
+
+.acs-spinner {
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--color-indigo);
+  flex-shrink: 0;
+  animation: acs-spin 0.7s linear infinite;
+}
+
+.acs-tool-done {
+  color: var(--color-teal);
+  flex-shrink: 0;
+}
+
+.acs-tool-name {
+  white-space: nowrap;
+}
+
+@keyframes acs-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Streaming text */
+
+.acs-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Blinking cursor */
+
+.acs-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  background: currentColor;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  border-radius: 1px;
+  animation: acs-blink 0.9s step-end infinite;
+}
+
+@keyframes acs-blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
