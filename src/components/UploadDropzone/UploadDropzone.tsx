@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback, useId, useEffect } from 'react'
 import './UploadDropzone.css'
 
-type FileStatus = 'pending' | 'uploading' | 'done' | 'error'
+type FileStatus = 'pending' | 'uploading' | 'done'
 
 interface UploadEntry {
   id: string
@@ -54,11 +54,11 @@ const FILE_ICON_COLORS: Record<string, string> = {
   mp4:  '#FF7A3D',
 }
 
-const getExtension = (name: string) => name.split('.').pop()?.toLowerCase() ?? ''
+const getExtension = (name: string) => (name.split('.').pop() || '').toLowerCase()
 
 const FileIcon = ({ name }: { name: string }) => {
   const ext = getExtension(name)
-  const color = FILE_ICON_COLORS[ext] ?? '#9A958B'
+  const color = FILE_ICON_COLORS[ext] || '#9A958B'
 
   return (
     <svg width="38" height="38" viewBox="0 0 38 38" fill="none" aria-hidden="true">
@@ -103,38 +103,31 @@ export const UploadDropzone = ({
 
   const runSimulation = useCallback((newEntries: UploadEntry[]) => {
     const ticksPerFile = (uploadSeconds * 1000) / TICK_MS
-    const incrementPerTick = 100 / ticksPerFile
     let queue = [...newEntries]
 
     const uploadNext = () => {
       if (queue.length === 0) {
-        setEntries(previous => {
-          const allFiles = previous.map(entry => entry.file)
-          onUpload?.(allFiles)
-          return previous
-        })
+        onUpload?.(newEntries.map(entry => entry.file))
         return
       }
       const current = queue[0]
       queue = queue.slice(1)
+      let ticks = 0
 
       const interval = setInterval(() => {
-        let done = false
+        ticks++
+        const progress = Math.min(100, (ticks / ticksPerFile) * 100)
+        const isDone = ticks >= ticksPerFile
 
         setEntries(previous =>
-          previous.map(entry => {
-            if (entry.id !== current.id) return entry
-            const nextProgress = Math.min(100, entry.progress + incrementPerTick)
-            if (nextProgress >= 100) done = true
-            return {
-              ...entry,
-              progress: nextProgress,
-              status: nextProgress >= 100 ? 'done' : 'uploading',
-            }
-          })
+          previous.map(entry =>
+            entry.id === current.id
+              ? { ...entry, progress, status: isDone ? 'done' : 'uploading' }
+              : entry
+          )
         )
 
-        if (done) {
+        if (isDone) {
           clearInterval(interval)
           intervalsRef.current.delete(current.id)
           uploadNext()
@@ -148,11 +141,19 @@ export const UploadDropzone = ({
   }, [uploadSeconds, onUpload])
 
   useEffect(() => {
+    const intervals = intervalsRef.current
+    return () => {
+      intervals.forEach(interval => clearInterval(interval))
+      intervals.clear()
+    }
+  }, [])
+
+  useEffect(() => {
     if (!initialFiles || initialFiles.length === 0) return
     const initialEntries = initialFiles.map(createEntry)
     const timeout = setTimeout(() => runSimulation(initialEntries), 0)
     return () => clearTimeout(timeout)
-  }, [])  // eslint-disable-line react-hooks/exhaustive-deps
+  }, [])
 
   const addFiles = useCallback((files: File[]) => {
     const newEntries = files.map(createEntry)

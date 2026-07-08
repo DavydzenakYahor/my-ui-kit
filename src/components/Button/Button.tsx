@@ -9,6 +9,7 @@ interface ButtonProps {
   disabled?: boolean
   /** Click handler */
   onClick?: () => void
+  /** Content rendered inside the button */
   children: React.ReactNode
 }
 

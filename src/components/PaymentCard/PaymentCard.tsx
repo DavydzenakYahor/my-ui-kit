@@ -61,14 +61,14 @@ export const PaymentCard = ({
   return (
     <div
       className="pc-scene"
-      onClick={() => !isSkeleton && setFlipped(f => !f)}
+      onClick={() => !isSkeleton && setFlipped(previous => !previous)}
       role={isSkeleton ? undefined : 'button'}
       aria-label={isSkeleton ? undefined : flipped ? 'Show card front' : 'Show card back'}
       tabIndex={isSkeleton ? undefined : 0}
-      onKeyDown={e => {
-        if (!isSkeleton && (e.key === 'Enter' || e.key === ' ')) {
-          e.preventDefault()
-          setFlipped(f => !f)
+      onKeyDown={event => {
+        if (!isSkeleton && (event.key === 'Enter' || event.key === ' ')) {
+          event.preventDefault()
+          setFlipped(previous => !previous)
         }
       }}
     >

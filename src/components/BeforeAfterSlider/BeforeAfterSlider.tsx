@@ -39,7 +39,7 @@ export const BeforeAfterSlider = ({
 
   const backgroundValue = imageSrc
     ? `url(${imageSrc}) center / cover no-repeat`
-    : gradient
+    : gradient || 'var(--color-surface-light-row)'
 
   const calculatePosition = useCallback((clientX: number) => {
     const container = containerRef.current
