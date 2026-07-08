@@ -1,0 +1,321 @@
+.udz-root {
+  width: 480px;
+  border-radius: 16px;
+  font-family: var(--font-display);
+  transition: box-shadow 0.2s ease;
+}
+
+.udz-root--light {
+  background: var(--color-surface-light);
+  box-shadow: 0 1px 4px rgba(28, 26, 23, 0.08), 0 0 0 1px rgba(28, 26, 23, 0.07);
+  color: var(--color-text-dark);
+}
+
+.udz-root--dark {
+  background: var(--color-surface-dark);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  color: var(--color-text-light);
+}
+
+/* Hidden file input */
+
+.udz-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Drop zone */
+
+.udz-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 48px 32px;
+  border-radius: 16px;
+  border: 1.5px dashed transparent;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.udz-root--light .udz-zone {
+  border-color: rgba(28, 26, 23, 0.2);
+  color: var(--color-text-muted);
+}
+
+.udz-root--dark .udz-zone {
+  border-color: rgba(242, 239, 233, 0.15);
+  color: var(--color-text-dark-muted);
+}
+
+.udz-root--light .udz-zone:hover,
+.udz-root--light .udz-zone:focus-visible,
+.udz-root--light.udz-root--dragging .udz-zone {
+  border-color: var(--color-indigo);
+  background: rgba(91, 91, 214, 0.04);
+  color: var(--color-indigo);
+}
+
+.udz-root--dark .udz-zone:hover,
+.udz-root--dark .udz-zone:focus-visible,
+.udz-root--dark.udz-root--dragging .udz-zone {
+  border-color: var(--color-indigo);
+  background: rgba(91, 91, 214, 0.08);
+  color: var(--color-indigo);
+}
+
+.udz-zone-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  transition: background 0.18s ease;
+}
+
+.udz-root--light .udz-zone-icon-wrap {
+  background: rgba(28, 26, 23, 0.06);
+}
+
+.udz-root--dark .udz-zone-icon-wrap {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.udz-root--light .udz-zone:hover .udz-zone-icon-wrap,
+.udz-root--light.udz-root--dragging .udz-zone .udz-zone-icon-wrap {
+  background: rgba(91, 91, 214, 0.1);
+}
+
+.udz-root--dark .udz-zone:hover .udz-zone-icon-wrap,
+.udz-root--dark.udz-root--dragging .udz-zone .udz-zone-icon-wrap {
+  background: rgba(91, 91, 214, 0.15);
+}
+
+.udz-zone-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.udz-zone-subtitle {
+  font-size: 13px;
+}
+
+.udz-zone-browse {
+  color: var(--color-indigo);
+  font-weight: 600;
+}
+
+.udz-zone-hint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  margin-top: 4px;
+  opacity: 0.55;
+}
+
+/* File section */
+
+.udz-file-section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Success banner */
+
+.udz-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 14px 2px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.udz-banner--success {
+  color: var(--color-teal);
+  background: rgba(46, 158, 143, 0.1);
+}
+
+/* File list */
+
+.udz-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.udz-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin: 2px 6px;
+  transition: background 0.15s ease;
+}
+
+.udz-root--light .udz-row:hover {
+  background: var(--color-surface-light-row);
+}
+
+.udz-root--dark .udz-row:hover {
+  background: var(--color-surface-dark-row);
+}
+
+.udz-row-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.udz-row-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.udz-row-name {
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.udz-row-size {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+/* Progress row */
+
+.udz-row-track {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.udz-track-bg {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.udz-root--light .udz-track-bg {
+  background: rgba(28, 26, 23, 0.1);
+}
+
+.udz-root--dark .udz-track-bg {
+  background: rgba(242, 239, 233, 0.1);
+}
+
+.udz-track-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--color-teal);
+  transition: width 0.05s linear;
+}
+
+.udz-track-fill--done {
+  background: var(--color-teal);
+}
+
+.udz-percent {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  min-width: 28px;
+  text-align: right;
+  opacity: 0.5;
+}
+
+.udz-icon-done {
+  color: var(--color-teal);
+  flex-shrink: 0;
+}
+
+/* Remove button */
+
+.udz-remove {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.udz-root--light .udz-remove {
+  color: var(--color-text-muted);
+}
+
+.udz-root--dark .udz-remove {
+  color: var(--color-text-dark-muted);
+}
+
+.udz-row:hover .udz-remove {
+  opacity: 1;
+}
+
+.udz-root--light .udz-remove:hover {
+  background: rgba(28, 26, 23, 0.08);
+}
+
+.udz-root--dark .udz-remove:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* Add more */
+
+.udz-add-more {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 4px 10px 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.udz-root--light .udz-add-more {
+  color: var(--color-text-muted);
+}
+
+.udz-root--dark .udz-add-more {
+  color: var(--color-text-dark-muted);
+}
+
+.udz-root--light .udz-add-more:hover {
+  background: var(--color-surface-light-row);
+  color: var(--color-indigo);
+}
+
+.udz-root--dark .udz-add-more:hover {
+  background: var(--color-surface-dark-row);
+  color: var(--color-indigo);
+}

@@ -1,0 +1,36 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as UploadDropzoneStories from './UploadDropzone.stories';
+
+<Meta of={UploadDropzoneStories} />
+
+# UploadDropzone
+
+Accessible file upload zone with drag & drop, real file selection, and sequential progress bars. Displays actual file names and sizes from the File API. Pass `onUpload` to receive files when the simulation completes.
+
+## Idle
+
+Empty state. Accepts drag & drop and click-to-browse. Hover activates the indigo highlight. `accept` restricts the file picker.
+
+<Canvas of={UploadDropzoneStories.Idle} />
+
+## Uploading
+
+Files upload sequentially — each progress bar fills before the next begins. Use `uploadSeconds` to control the duration per file.
+
+<Canvas of={UploadDropzoneStories.Uploading} />
+
+## Complete
+
+All files done. A success banner appears and checkmarks replace progress bars.
+
+<Canvas of={UploadDropzoneStories.Complete} />
+
+## Dark
+
+Dark theme. Hover states and progress use the same teal accent.
+
+<Canvas of={UploadDropzoneStories.Dark} />
+
+## Props
+
+<Controls />

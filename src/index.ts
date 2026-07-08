@@ -4,3 +4,4 @@ export { Input } from './components/Input/Input';
 export { Badge } from './components/Badge/Badge';
 export { PaymentCard } from './components/PaymentCard/PaymentCard';
 export { BeforeAfterSlider } from './components/BeforeAfterSlider/BeforeAfterSlider';
+export { UploadDropzone } from './components/UploadDropzone/UploadDropzone';
