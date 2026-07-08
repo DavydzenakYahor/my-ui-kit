@@ -20,14 +20,29 @@
   padding: var(--space-sm) var(--space-md);
 }
 
-.btn--primary { background-color: var(--color-primary); }
-.btn--primary:hover:not(:disabled) { background-color: var(--color-primary-hover); }
+.btn--primary {
+  background-color: var(--color-primary);
+}
 
-.btn--danger { background-color: var(--color-danger); }
-.btn--danger:hover:not(:disabled) { background-color: var(--color-danger-hover); }
+.btn--primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
 
-.btn--neutral { background-color: var(--color-neutral); }
-.btn--neutral:hover:not(:disabled) { background-color: var(--color-neutral-hover); }
+.btn--danger {
+  background-color: var(--color-danger);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background-color: var(--color-danger-hover);
+}
+
+.btn--neutral {
+  background-color: var(--color-neutral);
+}
+
+.btn--neutral:hover:not(:disabled) {
+  background-color: var(--color-neutral-hover);
+}
 
 .btn:disabled {
   opacity: 0.5;

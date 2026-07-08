@@ -1,0 +1,34 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as PaymentCardStories from './PaymentCard.stories';
+
+<Meta of={PaymentCardStories} />
+
+# PaymentCard
+
+Interactive 3D payment card with a flip animation. Click or press Enter/Space to reveal the CVV on the back.
+
+## Variants
+
+### Light
+Default indigo gradient. Suitable for light-themed interfaces.
+
+<Canvas of={PaymentCardStories.Light} />
+
+### Dark
+Deep dark gradient for dark-themed interfaces.
+
+<Canvas of={PaymentCardStories.Dark} />
+
+### Skeleton
+Loading state with pulsing placeholders. Use while card data is being fetched.
+
+<Canvas of={PaymentCardStories.Skeleton} />
+
+### Sunset
+Warm orange-to-purple gradient for premium card tiers.
+
+<Canvas of={PaymentCardStories.Sunset} />
+
+## Props
+
+<Controls />

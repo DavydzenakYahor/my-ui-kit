@@ -26,4 +26,32 @@
 
   --color-success: #22c55e;
   --color-success-hover: #16a34a;
+
+  /* Extended palette — interactive components */
+  --color-indigo: #5B5BD6;
+  --color-indigo-dark: #4747B0;
+  --color-teal: #2E9E8F;
+  --color-sunset-start: #FFB36B;
+  --color-sunset-mid: #E0526B;
+  --color-sunset-end: #B23A83;
+
+  /* Surfaces */
+  --color-surface-light: #FCFBF9;
+  --color-surface-light-row: #F1EEE9;
+  --color-surface-dark: #191816;
+  --color-surface-dark-row: #242220;
+
+  /* Muted text */
+  --color-text-muted: #9A958B;
+  --color-text-dark-muted: rgba(242, 239, 233, 0.45);
+  --color-text-light: #F2EFE9;
+  --color-text-dark: #1C1A17;
+
+  /* Typography */
+  --font-display: 'Space Grotesk', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Card */
+  --radius-card: 20px;
+  --shadow-card: 0 18px 40px -18px rgba(28, 26, 23, 0.35);
 }

@@ -1,10 +1,13 @@
-import React from 'react'
 import './Button.css'
 
 interface ButtonProps {
+  /** Visual style of the button */
   variant?: 'primary' | 'danger' | 'neutral'
+  /** Size of the button */
   size?: 'sm' | 'md'
+  /** Disables interaction and applies muted style */
   disabled?: boolean
+  /** Click handler */
   onClick?: () => void
   children: React.ReactNode
 }
@@ -21,7 +24,7 @@ export const Button = ({
       className={`btn btn--${variant} btn--${size}`}
       disabled={disabled}
       aria-disabled={disabled}
-      onClick={disabled ? undefined : onClick}
+      onClick={onClick}
     >
       {children}
     </button>

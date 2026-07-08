@@ -1,10 +1,13 @@
-import './Badge.css';
+import './Badge.css'
 
 interface BadgeProps {
-  label: string;
-  variant?: 'primary' | 'danger' | 'neutral' | 'success';
-  size?: 'sm' | 'md';
-};
+  /** Text label displayed inside the badge */
+  label: string
+  /** Visual style of the badge */
+  variant?: 'primary' | 'danger' | 'neutral' | 'success'
+  /** Size of the badge */
+  size?: 'sm' | 'md'
+}
 
 export const Badge = ({
   label,
@@ -15,5 +18,5 @@ export const Badge = ({
     <span className={`badge badge--${variant} badge--${size}`}>
       {label}
     </span>
-  );
-};
+  )
+}
