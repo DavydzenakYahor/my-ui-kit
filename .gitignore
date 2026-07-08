@@ -26,3 +26,7 @@ dist-ssr
 
 *storybook.log
 storybook-static
+
+# Local AI instructions
+UI_KIT_INSTRUCTIONS.md
+.claude/
