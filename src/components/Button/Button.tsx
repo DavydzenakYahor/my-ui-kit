@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react'
 import './Button.css'
 
 interface ButtonProps {
@@ -10,7 +11,7 @@ interface ButtonProps {
   /** Click handler */
   onClick?: () => void
   /** Content rendered inside the button */
-  children: React.ReactNode
+  children: ReactNode
 }
 
 export const Button = ({

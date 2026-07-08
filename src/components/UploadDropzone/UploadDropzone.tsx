@@ -101,6 +101,7 @@ export const UploadDropzone = ({
   const inputId = useId()
   const intervalsRef = useRef<Map<string, ReturnType<typeof setInterval>>>(new Map())
   const initialEntriesRef = useRef(entries)
+  const hasRunInitialSimulation = useRef(false)
 
   const runSimulation = useCallback((newEntries: UploadEntry[]) => {
     const ticksPerFile = (uploadSeconds * 1000) / TICK_MS
@@ -152,10 +153,11 @@ export const UploadDropzone = ({
   }, [])
 
   useEffect(() => {
-    if (initialEntriesRef.current.length === 0) return
+    if (hasRunInitialSimulation.current || initialEntriesRef.current.length === 0) return
+    hasRunInitialSimulation.current = true
     const timeout = setTimeout(() => runSimulation(initialEntriesRef.current), 0)
     return () => clearTimeout(timeout)
-  }, [])
+  }, [runSimulation])
 
   const addFiles = useCallback((files: File[]) => {
     const newEntries = files.map(createEntry)

@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useId, type ChangeEvent } from 'react'
 import './Input.css'
 
 interface InputProps {
@@ -13,7 +13,7 @@ interface InputProps {
   /** Error message shown below the input */
   error?: string
   /** Change handler */
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const Input = ({
