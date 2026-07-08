@@ -16,44 +16,52 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Light: Story = {
+export const Visa: Story = {
   args: {
-    variant: 'light',
+    brand: 'visa',
     bankName: 'NOVA',
-    cardNumber: '5312 4420 8871 0264',
-    cardholderName: 'EXAMPLE NAME',
+    cardNumber: '4916 0038 5512 7789',
+    cardholderName: 'CARDHOLDER NAME',
     expiry: '09/29',
     cvv: '314',
-    tier: 'infinite',
   },
 }
 
-export const Dark: Story = {
+export const Mastercard: Story = {
   args: {
-    variant: 'dark',
+    brand: 'mastercard',
     bankName: 'NOVA',
-    cardNumber: '4916 0038 5512 7789',
-    cardholderName: 'EXAMPLE NAME',
+    cardNumber: '5312 4420 8871 0264',
+    cardholderName: 'CARDHOLDER NAME',
     expiry: '02/28',
     cvv: '882',
-    tier: 'obsidian',
+  },
+}
+
+export const Amex: Story = {
+  args: {
+    brand: 'amex',
+    bankName: 'NOVA',
+    cardNumber: '3782 822463 10005',
+    cardholderName: 'CARDHOLDER NAME',
+    expiry: '11/27',
+    cvv: '1234',
+  },
+}
+
+export const Empty: Story = {
+  args: {
+    brand: 'visa',
+    bankName: '',
+    cardNumber: '**** **** **** ****',
+    cardholderName: 'CARDHOLDER NAME',
+    expiry: 'MM/YY',
+    cvv: '***',
   },
 }
 
 export const Skeleton: Story = {
   args: {
-    variant: 'skeleton',
-  },
-}
-
-export const Sunset: Story = {
-  args: {
-    variant: 'sunset',
-    bankName: 'NOVA',
-    cardNumber: '5591 7712 0043 6620',
-    cardholderName: 'EXAMPLE NAME',
-    expiry: '11/27',
-    cvv: '097',
-    tier: 'sunset',
+    skeleton: true,
   },
 }

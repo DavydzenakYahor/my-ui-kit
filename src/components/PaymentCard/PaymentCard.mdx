@@ -5,29 +5,31 @@ import * as PaymentCardStories from './PaymentCard.stories';
 
 # PaymentCard
 
-Interactive 3D payment card with a flip animation. Click or press Enter/Space to reveal the CVV on the back.
+Displays a saved payment card with cardholder details on the front and CVV on the back. Click or press Enter/Space to flip.
 
-## Variants
+## Visa
 
-### Light
-Default indigo gradient. Suitable for light-themed interfaces.
+<Canvas of={PaymentCardStories.Visa} />
 
-<Canvas of={PaymentCardStories.Light} />
+## Mastercard
 
-### Dark
-Deep dark gradient for dark-themed interfaces.
+<Canvas of={PaymentCardStories.Mastercard} />
 
-<Canvas of={PaymentCardStories.Dark} />
+## Amex
 
-### Skeleton
-Loading state with pulsing placeholders. Use while card data is being fetched.
+<Canvas of={PaymentCardStories.Amex} />
+
+## Empty
+
+Preview state before the user fills in their card details — pass masked placeholders for each field.
+
+<Canvas of={PaymentCardStories.Empty} />
+
+## Skeleton
+
+Use while card data is being fetched. Flip is disabled.
 
 <Canvas of={PaymentCardStories.Skeleton} />
-
-### Sunset
-Warm orange-to-purple gradient for premium card tiers.
-
-<Canvas of={PaymentCardStories.Sunset} />
 
 ## Props
 

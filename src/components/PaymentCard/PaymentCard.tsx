@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useState, useId } from 'react'
 import './PaymentCard.css'
 
+type Brand = 'visa' | 'mastercard' | 'amex'
+
 interface PaymentCardProps {
-  /** Visual theme of the card */
-  variant?: 'light' | 'dark' | 'skeleton' | 'sunset'
-  /** Bank or brand name shown at the top */
+  /** Payment network brand — determines the logo shown on the card */
+  brand?: Brand
+  /** Bank or issuer name shown at the top */
   bankName?: string
-  /** 16-digit card number, displayed in groups of 4 */
+  /** 16-digit card number displayed in groups of 4 */
   cardNumber?: string
   /** Cardholder full name */
   cardholderName?: string
@@ -14,61 +16,92 @@ interface PaymentCardProps {
   expiry?: string
   /** CVV shown on the back */
   cvv?: string
-  /** Card tier label, e.g. "infinite" */
-  tier?: string
+  /** Replaces card content with a pulsing skeleton — use while card data is loading */
+  skeleton?: boolean
 }
 
-const VARIANTS = {
-  light: {
-    frontBg: 'linear-gradient(135deg, #ECEAFF 0%, #CBC4FF 100%)',
-    backBg: 'linear-gradient(135deg, #DCD7FF, #B4AAF2)',
-    text: 'var(--color-text-dark)',
-    sub: 'rgba(38, 34, 78, 0.55)',
-  },
-  dark: {
-    frontBg: 'linear-gradient(135deg, #2C2926 0%, #100F0D 100%)',
-    backBg: 'linear-gradient(135deg, #211F1C, #0B0A09)',
-    text: 'var(--color-text-light)',
-    sub: 'rgba(242, 239, 233, 0.5)',
-  },
-  skeleton: {
-    frontBg: '#ECE9E4',
-    backBg: '#E3E0DA',
-    text: 'transparent',
-    sub: 'transparent',
-  },
-  sunset: {
-    frontBg: 'linear-gradient(135deg, #FFB36B 0%, #E0526B 62%, #B23A83 100%)',
-    backBg: 'linear-gradient(135deg, #D96A54, #8E2F63)',
-    text: '#FFF7F0',
-    sub: 'rgba(255, 247, 240, 0.62)',
-  },
+const VisaLogo = () => (
+  <svg width="54" height="18" viewBox="0 0 54 18" aria-label="Visa">
+    <text
+      x="0"
+      y="15"
+      fontFamily="Arial, sans-serif"
+      fontSize="20"
+      fontWeight="900"
+      fontStyle="italic"
+      fill="white"
+    >
+      VISA
+    </text>
+  </svg>
+)
+
+const MastercardLogo = () => {
+  const clipId = useId()
+  return (
+    <svg width="40" height="26" viewBox="0 0 40 26" aria-label="Mastercard">
+      <defs>
+        <clipPath id={clipId}>
+          <circle cx="26" cy="13" r="12" />
+        </clipPath>
+      </defs>
+      <circle cx="14" cy="13" r="12" fill="#EB001B" />
+      <circle cx="26" cy="13" r="12" fill="#F79E1B" />
+      <circle cx="14" cy="13" r="12" fill="#FF5F00" clipPath={`url(#${clipId})`} />
+    </svg>
+  )
+}
+
+const AmexLogo = () => (
+  <svg width="52" height="18" viewBox="0 0 52 18" aria-label="American Express">
+    <text
+      x="0"
+      y="13"
+      fontFamily="Arial, sans-serif"
+      fontSize="11"
+      fontWeight="700"
+      fill="white"
+      letterSpacing="2.5"
+    >
+      AMEX
+    </text>
+  </svg>
+)
+
+const BrandLogo = ({ brand }: { brand: Brand }) => {
+  if (brand === 'visa') return <VisaLogo />
+  if (brand === 'mastercard') return <MastercardLogo />
+  return <AmexLogo />
 }
 
 export const PaymentCard = ({
-  variant = 'light',
+  brand = 'visa',
   bankName = 'NOVA',
   cardNumber = '5312 4420 8871 0264',
-  cardholderName = 'ANNA SOROKINA',
+  cardholderName = 'EXAMPLE NAME',
   expiry = '09/29',
   cvv = '314',
-  tier = 'infinite',
+  skeleton = false,
 }: PaymentCardProps) => {
   const [flipped, setFlipped] = useState(false)
-  const styles = VARIANTS[variant]
-  const isSkeleton = variant === 'skeleton'
+
+  const toggle = () => {
+    if (!skeleton) {
+      setFlipped(previous => !previous)
+    }
+  }
 
   return (
     <div
       className="pc-scene"
-      onClick={() => !isSkeleton && setFlipped(previous => !previous)}
-      role={isSkeleton ? undefined : 'button'}
-      aria-label={isSkeleton ? undefined : flipped ? 'Show card front' : 'Show card back'}
-      tabIndex={isSkeleton ? undefined : 0}
+      onClick={toggle}
+      role={skeleton ? undefined : 'button'}
+      aria-label={skeleton ? undefined : flipped ? 'Show card front' : 'Show card back'}
+      tabIndex={skeleton ? undefined : 0}
       onKeyDown={event => {
-        if (!isSkeleton && (event.key === 'Enter' || event.key === ' ')) {
+        if (!skeleton && (event.key === 'Enter' || event.key === ' ')) {
           event.preventDefault()
-          setFlipped(previous => !previous)
+          toggle()
         }
       }}
     >
@@ -77,11 +110,10 @@ export const PaymentCard = ({
         style={{ transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
       >
         <div
-          className="pc-face pc-face--front"
-          style={{ background: styles.frontBg, color: styles.text }}
+          className={`pc-face pc-face--front${skeleton ? ' pc-face--skeleton' : ''}`}
           aria-hidden={flipped}
         >
-          {isSkeleton ? (
+          {skeleton ? (
             <div className="pc-skeleton-layer">
               <div className="pc-skeleton pc-skeleton--wide" />
               <div className="pc-skeleton pc-skeleton--chip" />
@@ -91,21 +123,21 @@ export const PaymentCard = ({
           ) : (
             <>
               <div className="pc-front-header">
-                <span className="pc-bank" style={{ color: styles.text }}>{bankName}</span>
-                <span className="pc-tier" style={{ color: styles.sub }}>{tier.toUpperCase()}</span>
+                <span className="pc-bank">{bankName}</span>
+                <BrandLogo brand={brand} />
               </div>
               <div className="pc-chip" aria-hidden="true">
                 <div className="pc-chip-inner" />
               </div>
-              <div className="pc-number" style={{ color: styles.text }}>{cardNumber}</div>
+              <div className="pc-number">{cardNumber}</div>
               <div className="pc-front-footer">
                 <div className="pc-holder-block">
-                  <span className="pc-label" style={{ color: styles.sub }}>CARD HOLDER</span>
-                  <span className="pc-value" style={{ color: styles.text }}>{cardholderName}</span>
+                  <span className="pc-label">CARD HOLDER</span>
+                  <span className="pc-value">{cardholderName}</span>
                 </div>
                 <div className="pc-expiry-block">
-                  <span className="pc-label" style={{ color: styles.sub }}>EXPIRES</span>
-                  <span className="pc-value" style={{ color: styles.text }}>{expiry}</span>
+                  <span className="pc-label">EXPIRES</span>
+                  <span className="pc-value">{expiry}</span>
                 </div>
               </div>
             </>
@@ -113,11 +145,10 @@ export const PaymentCard = ({
         </div>
 
         <div
-          className="pc-face pc-face--back"
-          style={{ background: styles.backBg, color: styles.text }}
+          className={`pc-face pc-face--back${skeleton ? ' pc-face--skeleton' : ''}`}
           aria-hidden={!flipped}
         >
-          {isSkeleton ? (
+          {skeleton ? (
             <div className="pc-skeleton-layer">
               <div className="pc-skeleton pc-skeleton--strip" />
               <div className="pc-skeleton pc-skeleton--cvv" />
@@ -128,12 +159,12 @@ export const PaymentCard = ({
               <div className="pc-cvv-row">
                 <div className="pc-cvv-tape" aria-hidden="true" />
                 <div className="pc-cvv-block">
-                  <span className="pc-label" style={{ color: styles.sub }}>CVV</span>
-                  <span className="pc-cvv-value" style={{ color: styles.text }}>{cvv}</span>
+                  <span className="pc-label">CVV</span>
+                  <span className="pc-cvv-value">{cvv}</span>
                 </div>
               </div>
               <div className="pc-back-footer">
-                <span className="pc-bank" style={{ color: styles.text }}>{bankName}</span>
+                <span className="pc-bank">{bankName}</span>
               </div>
             </>
           )}
