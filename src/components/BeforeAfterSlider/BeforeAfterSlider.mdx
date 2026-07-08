@@ -1,0 +1,36 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as BeforeAfterSliderStories from './BeforeAfterSlider.stories';
+
+<Meta of={BeforeAfterSliderStories} />
+
+# BeforeAfterSlider
+
+Drag-to-compare image slider. The divider reveals the processed ("after") version and leaves the original ("before") visible underneath. Fully keyboard-accessible via arrow keys.
+
+## ColorGrade
+
+Sunset scene with grayscale "before" and color-graded "after". Handle starts at 40% to immediately show the difference.
+
+<Canvas of={BeforeAfterSliderStories.ColorGrade} />
+
+## Disabled
+
+Same scene with `disabled` prop. The handle is locked in place — pointer events and keyboard navigation are both blocked.
+
+<Canvas of={BeforeAfterSliderStories.Disabled} />
+
+## Skeleton
+
+Loading state shown while the scene is being fetched.
+
+<Canvas of={BeforeAfterSliderStories.Skeleton} />
+
+## Upscale
+
+Real portrait photo passed via `imageSrc`. The "before" side applies `blur(3px) grayscale(0.5)` so the sharpness difference is immediately visible. Handle starts at 35%.
+
+<Canvas of={BeforeAfterSliderStories.Upscale} />
+
+## Props
+
+<Controls />
