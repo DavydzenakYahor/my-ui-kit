@@ -290,6 +290,61 @@ const [phase, setPhase] = useState<Phase>('thinking')
 
 ---
 
+## AvatarHoverCard
+
+Avatar that reveals a hover card with the user's name, role, bio, status, and action buttons. Works with mouse and keyboard (focus).
+
+```tsx
+import { AvatarHoverCard } from '@davydzenak_yahor/my-ui-kit'
+
+// Basic usage
+<AvatarHoverCard
+  name="Alex Johnson"
+  role="Senior Engineer"
+  bio="Building developer tools and internal platforms."
+  status="online"
+  onMessage={() => openChat('alex')}
+  onProfile={() => navigate('/users/alex')}
+/>
+
+// Custom avatar color and away status
+<AvatarHoverCard
+  name="Maria Santos"
+  role="Product Designer"
+  bio="Designing systems that scale."
+  avatarColor="#E0526B"
+  status="away"
+/>
+
+// Dark theme
+<AvatarHoverCard
+  theme="dark"
+  name="Jordan Lee"
+  role="Data Engineer"
+  avatarColor="var(--color-teal)"
+  status="online"
+/>
+
+// Loading state
+<AvatarHoverCard skeleton />
+```
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `theme` | `'light' \| 'dark'` | `'light'` | UI color theme |
+| `name` | `string` | `'Alex Johnson'` | Full name — used to derive initials |
+| `role` | `string` | — | Job title shown in the hover card |
+| `bio` | `string` | — | Short bio shown in the hover card |
+| `initials` | `string` | — | Avatar initials — derived from name if omitted |
+| `avatarColor` | `string` | `'var(--color-indigo)'` | Avatar background color |
+| `status` | `'online' \| 'away' \| 'offline'` | `'online'` | User presence status |
+| `skeleton` | `boolean` | `false` | Loading state with shimmer placeholders |
+| `direction` | `'top' \| 'bottom' \| 'left' \| 'right'` | — | Fixed side for the hover card. When omitted, the component auto-detects which side has the most space |
+| `onMessage` | `() => void` | — | Called when Message is clicked |
+| `onProfile` | `() => void` | — | Called when Profile is clicked |
+
+---
+
 ## TypeScript
 
 The package ships with full type definitions. No additional `@types` packages needed.

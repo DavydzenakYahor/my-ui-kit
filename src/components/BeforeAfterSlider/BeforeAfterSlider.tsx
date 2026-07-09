@@ -121,10 +121,10 @@ export const BeforeAfterSlider = ({
               </div>
             </div>
 
-            <span className="bas-side-label bas-side-label--before">BEFORE</span>
-            <span className="bas-side-label bas-side-label--after">AFTER</span>
+            <span className="bas-side-label bas-side-label--before" aria-hidden="true">BEFORE</span>
+            <span className="bas-side-label bas-side-label--after" aria-hidden="true">AFTER</span>
 
-            {badge && <span className="bas-badge">{badge}</span>}
+            {badge && <span className="bas-badge" aria-hidden="true">{badge}</span>}
           </>
         )}
       </div>

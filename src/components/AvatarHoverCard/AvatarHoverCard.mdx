@@ -1,0 +1,36 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as AvatarHoverCardStories from './AvatarHoverCard.stories';
+
+<Meta of={AvatarHoverCardStories} />
+
+# AvatarHoverCard
+
+Avatar with an animated hover card showing the user's name, role, bio, and status. Hover or focus the avatar to reveal the card.
+
+## Online
+
+<Canvas of={AvatarHoverCardStories.Online} />
+
+## Away
+
+<Canvas of={AvatarHoverCardStories.Away} />
+
+## Dark
+
+<Canvas of={AvatarHoverCardStories.Dark} />
+
+## Direction: Top
+
+When `direction="top"` is set the card always opens upward. Without the prop the component auto-detects the side with the most available space.
+
+<Canvas of={AvatarHoverCardStories.DirectionTop} />
+
+## Skeleton
+
+Use while profile data is loading. The avatar circle and card content are replaced with shimmer placeholders.
+
+<Canvas of={AvatarHoverCardStories.Skeleton} />
+
+## Props
+
+<Controls />

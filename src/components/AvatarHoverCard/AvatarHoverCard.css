@@ -1,0 +1,272 @@
+.ahc-root {
+  display: inline-block;
+  position: relative;
+}
+
+/* Trigger */
+
+.ahc-trigger {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.ahc-trigger:focus-visible .ahc-avatar {
+  outline: 2px solid var(--color-indigo);
+  outline-offset: 3px;
+}
+
+.ahc-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 6px 16px -6px rgba(28, 26, 23, 0.35);
+  user-select: none;
+}
+
+.ahc-avatar--skeleton {
+  background: linear-gradient(
+    90deg,
+    #DDD9D2 25%,
+    #EFECE7 50%,
+    #DDD9D2 75%
+  );
+  background-size: 200% 100%;
+  animation: ahc-shimmer 1.4s ease-in-out infinite;
+}
+
+/* Status dot on avatar */
+
+.ahc-status {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #FCFBF9;
+}
+
+.ahc-root--dark .ahc-status {
+  border-color: var(--color-surface-dark);
+}
+
+/* Popup */
+
+.ahc-popup[aria-hidden="true"] {
+  visibility: hidden;
+}
+
+.ahc-popup {
+  position: absolute;
+  width: 260px;
+  border-radius: 16px;
+  padding: 18px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10;
+}
+
+.ahc-root--light .ahc-popup {
+  background: var(--color-surface-light);
+  color: var(--color-text-dark);
+  box-shadow:
+    0 20px 44px -18px rgba(28, 26, 23, 0.4),
+    0 0 0 1px rgba(28, 26, 23, 0.07);
+}
+
+.ahc-root--dark .ahc-popup {
+  background: var(--color-surface-dark-row);
+  color: var(--color-text-light);
+  box-shadow:
+    0 20px 44px -18px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Popup header */
+
+.ahc-popup-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ahc-mini-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  user-select: none;
+}
+
+.ahc-popup-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.ahc-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ahc-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ahc-root--dark .ahc-role {
+  color: var(--color-text-dark-muted);
+}
+
+.ahc-status-badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.ahc-status-dot-sm {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Bio */
+
+.ahc-bio {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.ahc-root--dark .ahc-bio {
+  color: var(--color-text-dark-muted);
+}
+
+/* Action buttons */
+
+.ahc-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.ahc-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.12s ease;
+}
+
+.ahc-btn:hover {
+  opacity: 0.82;
+}
+
+.ahc-btn--primary {
+  background: var(--color-indigo);
+  color: #ffffff;
+}
+
+.ahc-root--light .ahc-btn--secondary {
+  background: transparent;
+  border: 1px solid var(--color-surface-light-row);
+  color: var(--color-text-dark);
+}
+
+.ahc-root--dark .ahc-btn--secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-text-light);
+}
+
+/* Skeleton */
+
+.ahc-skeleton-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ahc-skeleton-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ahc-skeleton-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.ahc-skeleton {
+  border-radius: 5px;
+  background: linear-gradient(
+    90deg,
+    #DDD9D2 25%,
+    #EFECE7 50%,
+    #DDD9D2 75%
+  );
+  background-size: 200% 100%;
+  animation: ahc-shimmer 1.4s ease-in-out infinite;
+}
+
+.ahc-skeleton--avatar { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; }
+.ahc-skeleton--name   { height: 11px; width: 100px; }
+.ahc-skeleton--role   { height: 9px;  width: 70px; }
+.ahc-skeleton--bio-1  { height: 8px;  width: 100%; }
+.ahc-skeleton--bio-2  { height: 8px;  width: 80%; }
+
+@keyframes ahc-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

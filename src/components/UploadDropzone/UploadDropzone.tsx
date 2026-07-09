@@ -41,17 +41,17 @@ const createEntry = (file: File): UploadEntry => ({
 })
 
 const FILE_ICON_COLORS: Record<string, string> = {
-  pdf:  '#E0526B',
-  jpg:  '#5B5BD6',
+  pdf: '#E0526B',
+  jpg: '#5B5BD6',
   jpeg: '#5B5BD6',
-  png:  '#5B5BD6',
-  gif:  '#5B5BD6',
-  svg:  '#5B5BD6',
-  csv:  '#2E9E8F',
+  png: '#5B5BD6',
+  gif: '#5B5BD6',
+  svg: '#5B5BD6',
+  csv: '#2E9E8F',
   xlsx: '#2E9E8F',
-  xls:  '#2E9E8F',
-  zip:  '#9A958B',
-  mp4:  '#FF7A3D',
+  xls: '#2E9E8F',
+  zip: '#9A958B',
+  mp4: '#FF7A3D',
 }
 
 const getExtension = (name: string) => (name.split('.').pop() || '').toLowerCase()
@@ -70,17 +70,6 @@ const FileIcon = ({ name }: { name: string }) => {
         strokeLinejoin="round"
       />
       <path d="M21 10v6h6" stroke={color} strokeWidth="1.5" strokeLinejoin="round" />
-      <text
-        x="19"
-        y="27"
-        textAnchor="middle"
-        fontSize="6.5"
-        fontWeight="700"
-        fill={color}
-        fontFamily="monospace"
-      >
-        {ext.slice(0, 3).toUpperCase()}
-      </text>
     </svg>
   )
 }

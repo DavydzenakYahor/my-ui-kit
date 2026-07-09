@@ -11,6 +11,14 @@ const preview: Preview = {
       },
     },
 
+    backgrounds: {
+      default: 'light',
+      values: [
+        { name: 'light', value: '#FCFBF9' },
+        { name: 'dark', value: '#191816' },
+      ],
+    },
+
     a11y: {
       test: 'todo'
     }

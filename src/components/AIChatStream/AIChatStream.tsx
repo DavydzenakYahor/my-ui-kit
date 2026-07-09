@@ -86,7 +86,7 @@ export const AIChatStream = ({
         <AIAvatar />
         <div className="acs-body">
           {phase === 'thinking' && (
-            <div className="acs-thinking" aria-label="Thinking">
+            <div className="acs-thinking" role="status" aria-label="Thinking">
               <span className="acs-dot" />
               <span className="acs-dot" />
               <span className="acs-dot" />

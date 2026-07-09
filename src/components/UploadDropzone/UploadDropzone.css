@@ -118,7 +118,6 @@
   font-family: var(--font-mono);
   font-size: 11px;
   margin-top: 4px;
-  opacity: 0.55;
 }
 
 /* File section */
@@ -142,7 +141,7 @@
 }
 
 .udz-banner--success {
-  color: var(--color-teal);
+  color: #1a6b5a;
   background: rgba(46, 158, 143, 0.1);
 }
 
@@ -199,7 +198,14 @@
   font-family: var(--font-mono);
   font-size: 11px;
   flex-shrink: 0;
-  opacity: 0.5;
+}
+
+.udz-root--light .udz-row-size {
+  color: var(--color-text-muted);
+}
+
+.udz-root--dark .udz-row-size {
+  color: var(--color-text-dark-muted);
 }
 
 /* Progress row */
@@ -241,7 +247,14 @@
   font-size: 11px;
   min-width: 28px;
   text-align: right;
-  opacity: 0.5;
+}
+
+.udz-root--light .udz-percent {
+  color: var(--color-text-muted);
+}
+
+.udz-root--dark .udz-percent {
+  color: var(--color-text-dark-muted);
 }
 
 .udz-icon-done {
