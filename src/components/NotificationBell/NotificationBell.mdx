@@ -1,0 +1,42 @@
+import { Meta, Canvas, Controls } from '@storybook/addon-docs/blocks';
+import * as NotificationBellStories from './NotificationBell.stories';
+
+<Meta of={NotificationBellStories} />
+
+# NotificationBell
+
+Bell icon button with a badge counter that opens a dropdown panel listing notifications. Supports unread indicators, sender avatars, type icons, a "Mark all read" action, per-item dismiss, an empty state, and a skeleton loading mode.
+
+## Unread
+
+Panel open with two unread notifications (bold title + indigo dot) and one read. Click the bell to toggle, or press Escape to close.
+
+<Canvas of={NotificationBellStories.Unread} />
+
+## All Read
+
+All notifications are marked read — the badge and "Mark all read" button are hidden.
+
+<Canvas of={NotificationBellStories.AllRead} />
+
+## Dark
+
+Dark-theme variant with unread notifications.
+
+<Canvas of={NotificationBellStories.Dark} />
+
+## Empty
+
+No notifications yet — the panel shows the empty state illustration.
+
+<Canvas of={NotificationBellStories.Empty} />
+
+## Skeleton
+
+Use while notification data is loading. The bell and panel rows are replaced with shimmer placeholders.
+
+<Canvas of={NotificationBellStories.Skeleton} />
+
+## Props
+
+<Controls />

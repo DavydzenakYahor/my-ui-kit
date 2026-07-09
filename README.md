@@ -345,6 +345,78 @@ import { AvatarHoverCard } from '@davydzenak_yahor/my-ui-kit'
 
 ---
 
+## NotificationBell
+
+Bell icon button that opens a dropdown panel listing notifications. Supports unread badges, sender avatars, per-type icons (info / success / warning / mention / system), "Mark all read", per-item dismiss, an empty state, and a skeleton loading mode. Closes on Escape or outside click.
+
+```tsx
+import { NotificationBell } from '@davydzenak_yahor/my-ui-kit'
+import type { NotificationItem } from '@davydzenak_yahor/my-ui-kit'
+
+const notifications: NotificationItem[] = [
+  {
+    id: '1',
+    type: 'mention',
+    title: 'Alex Johnson mentioned you',
+    body: 'Can you review my PR before EOD?',
+    timestamp: '2m ago',
+    read: false,
+    initials: 'AJ',
+    avatarColor: 'var(--color-indigo)',
+  },
+  {
+    id: '2',
+    type: 'success',
+    title: 'Deployment succeeded',
+    body: 'v2.4.1 is live',
+    timestamp: '1h ago',
+    read: false,
+  },
+]
+
+// Light theme with unread count badge
+<NotificationBell
+  notifications={notifications}
+  onMarkAllRead={() => markAllRead()}
+  onDismiss={(id) => dismiss(id)}
+/>
+
+// Dark theme
+<NotificationBell
+  theme="dark"
+  notifications={notifications}
+  onMarkAllRead={() => markAllRead()}
+  onDismiss={(id) => dismiss(id)}
+/>
+
+// Loading state
+<NotificationBell skeleton />
+```
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `theme` | `'light' \| 'dark'` | `'light'` | UI color theme |
+| `notifications` | `NotificationItem[]` | `[]` | Notification items to display |
+| `skeleton` | `boolean` | `false` | Loading state with shimmer placeholders |
+| `defaultOpen` | `boolean` | `false` | Opens the panel on mount — for Storybook previews |
+| `onMarkAllRead` | `() => void` | — | Called when the user clicks "Mark all read" |
+| `onDismiss` | `(id: string) => void` | — | Called when the user dismisses a notification |
+
+**`NotificationItem` shape:**
+
+| Field | Type | Description |
+|---|---|---|
+| `id` | `string` | Unique identifier |
+| `type` | `'info' \| 'success' \| 'warning' \| 'mention' \| 'system'` | Determines icon and accent colour |
+| `title` | `string` | Primary notification text |
+| `body` | `string` | Optional supporting detail |
+| `timestamp` | `string` | Human-readable time, e.g. `"2m ago"` |
+| `read` | `boolean` | Whether the notification has been seen |
+| `initials` | `string` | Two-letter initials for the sender avatar |
+| `avatarColor` | `string` | Avatar background color — use a color that passes 4.5:1 contrast with white |
+
+---
+
 ## TypeScript
 
 The package ships with full type definitions. No additional `@types` packages needed.

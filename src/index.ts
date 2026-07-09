@@ -7,3 +7,5 @@ export { BeforeAfterSlider } from './components/BeforeAfterSlider/BeforeAfterSli
 export { UploadDropzone } from './components/UploadDropzone/UploadDropzone';
 export { AIChatStream } from './components/AIChatStream/AIChatStream'
 export { AvatarHoverCard } from './components/AvatarHoverCard/AvatarHoverCard';
+export { NotificationBell } from './components/NotificationBell/NotificationBell';
+export type { NotificationItem, NotificationBellProps } from './components/NotificationBell/NotificationBell';
