@@ -1,17 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { UploadDropzone } from './UploadDropzone'
 
-const meta: Meta<typeof UploadDropzone> = {
+const meta = {
   title: 'Components/UploadDropzone',
   component: UploadDropzone,
   parameters: {
     layout: 'centered',
   },
-}
+  argTypes: {
+    initialFiles: { control: false },
+    onUpload: { control: false },
+    uploadSeconds: { control: { type: 'number', min: 0.01, max: 10, step: 0.5 } },
+  },
+} satisfies Meta<typeof UploadDropzone>
 
 export default meta
 
-type Story = StoryObj<typeof UploadDropzone>
+type Story = StoryObj<typeof meta>
 
 const makeFakeFile = (name: string, sizeBytes: number) =>
   new File([new ArrayBuffer(sizeBytes)], name)
