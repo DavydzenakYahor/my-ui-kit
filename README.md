@@ -423,5 +423,5 @@ The package ships with full type definitions. No additional `@types` packages ne
 
 ## Links
 
-- [Storybook](https://your-chromatic-url)
+- [Storybook](https://main--6a4d0dc6368c4a9afd6387cb.chromatic.com)
 - [GitHub](https://github.com/DavydzenakYahor/my-ui-kit)
